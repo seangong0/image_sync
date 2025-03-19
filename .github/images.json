@@ -1,0 +1,10 @@
+[
+  {
+    "name": "void-glibc-busybox",
+    "source": "ghcr.io/void-linux/void-glibc-busybox:20250301R1"
+  },
+  {
+    "name": "postgres",
+    "source": "docker.io/postgres:16.8"
+  }
+]
