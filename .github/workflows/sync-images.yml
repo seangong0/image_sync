@@ -3,14 +3,13 @@ name: Sync Images from List
 on:
   workflow_dispatch: # 手动触发
   schedule:
-    - cron: '0 3 * * *'  # 每天 03:00 触发
+    - cron: '0 3 * * 0'  # 每周日 03:00 触发
   push:
     paths:
       - '.github/images.json'  # 配置文件变更触发
 
 env:
   TARGET_REGISTRY: ccr.ccs.tencentyun.com
-  TARGET_NAMESPACE: common-01
 
 jobs:
   sync-images:
@@ -39,10 +38,12 @@ jobs:
             IMAGES=$(jq -c '.[]' .github/images.json)
             while IFS= read -r IMAGE; do
               SOURCE=$(echo "$IMAGE" | jq -r '.source')
+              TARGET_NAMESPACE=$(echo "$IMAGE" | jq -r '.namespace')
+              ARCH=$(echo "$IMAGE" | jq -r '.arch')
               IMAGE_NAME=$(echo $SOURCE | awk -F/ '{print $NF}')
               TARGET="$TARGET_REGISTRY/$TARGET_NAMESPACE/$IMAGE_NAME"
               
-              docker pull --platform=linux/amd64 $SOURCE
+              docker pull --platform=$ARCH $SOURCE
               docker tag $SOURCE $TARGET
               docker push $TARGET
             done <<< "$IMAGES"
