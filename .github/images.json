@@ -16,5 +16,11 @@
     "source": "docker.io/rabbitmq:4.1-management",
     "arch": "linux/amd64",
     "namespace": "common-01"
-  }
+  },
+  {
+    "name": "valkey",
+    "source": "docker.io/valkey/valkey:8.1",
+    "arch": "linux/amd64",
+    "namespace": "common-01"
+  }  
 ]
