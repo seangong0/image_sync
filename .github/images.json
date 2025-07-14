@@ -22,5 +22,17 @@
     "source": "docker.io/valkey/valkey:8.1",
     "arch": "linux/amd64",
     "namespace": "common-01"
-  }  
+  },
+  {
+    "name": "mihomo",
+    "source": "docker.io/metacubex/mihomo:v1.19.11",
+    "arch": "linux/amd64",
+    "namespace": "common-01"
+  },
+  {
+    "name": "yacd",
+    "source": "docker.io/p3terx/yacd",
+    "arch": "linux/amd64",
+    "namespace": "common-01"
+  }
 ]
