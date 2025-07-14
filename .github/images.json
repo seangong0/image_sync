@@ -31,7 +31,7 @@
   },
   {
     "name": "yacd",
-    "source": "docker.io/p3terx/yacd",
+    "source": "docker.io/p3terx/yacd:latest",
     "arch": "linux/amd64",
     "namespace": "common-01"
   }
